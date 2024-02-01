@@ -1,46 +1,117 @@
-<div class="container">
-    <mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input class=""  matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
+<div class="example-container mat-elevation-z0">
+    <div class="example-header">
+        <mat-form-field class="example-full-width">
+            <mat-label>Filter</mat-label>
+            <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input
+                class="input w-full max-w-xs" />
 
-<table mat-table [dataSource]="dataSource" class="table"  matSort (matSortChange)="announceSortChange($event)">
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> Table Position </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+        </mat-form-field>
+        <div onclick="modal.showModal()" class="items-center m-7 btn btn-circle btn-info text-gray-900 ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </div>
+    </div>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+    <table mat-table [dataSource]="dataSource" class="table mat-table" matSort
+        (matSortChange)="announceSortChange($event)">
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="molar">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight"> Molar </th>
-    <td mat-cell *matCellDef="let element"> {{element.molar}} </td>
-  </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> Table Position
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- Molar Column -->
+        <ng-container matColumnDef="molar">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight"> Molar </th>
+            <td mat-cell *matCellDef="let element"> {{element.molar}} </td>
+        </ng-container>
 
-  <!-- Row shown when there is no matching data. -->
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
-</table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-  </mat-paginator>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+        <!-- Delete Column -->
+        <ng-container matColumnDef="controls">
+            <th mat-header-cell *matHeaderCellDef class="justify-end"> Controls </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="items-center m-1 btn btn-circle btn-warning text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+                </div>
+                <div class="items-center m-1 btn btn-circle btn-error text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                    </svg>
+
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+    <!-- Open the modal-->
+
 
 </div>
+<dialog data-theme="business" id="modal" class="modal">
+    <form (ngSubmit)="onSubmit()" [formGroup]="newElement" class="modal-box md:w-11/12 md:max-w-5xl">
+        <h3 class="font-bold text-lg">Add Element</h3>
+        <div class="flex items-center justify-center">
+            <div class="xl:w-10/12 md:w-full w-screen px-8">
+                <div>
+                    <div class="text-sm font-medium leading-none text-gray-400">Table Position </div>
+                    <input formControlName="position" type="number" placeholder="Type the element position"
+                        class="input input-bordered input-info w-full my-2" />
+                </div>
+                <div>
+                    <div class="text-sm font-medium leading-none text-gray-400"> Name </div>
+                    <input formControlName="name" type="text" placeholder="Type the element name"
+                        class="input input-bordered input-info w-full my-2" />
+                </div>
+                <div class="w-full">
+                    <div class="text-sm font-medium leading-none text-gray-400"> Molar </div>
+                    <input formControlName="molar" type="number" placeholder="Type the element weight"
+                        class="input input-bordered input-info w-full  my-2" />
+                </div>
+                <div class="w-full">
+                    <div class="text-sm font-medium leading-none text-gray-400"> Symbol </div>
+                    <input formControlName="symbol" type="text" placeholder="Type the element symbol"
+                        class="input input-bordered input-info w-full  my-2" />
+                </div>
+                <div class="mt-8">
+                    <button role="button" type="submit" aria-label="Save an element"
+                        class="btn bg-sky-500 rounded-full py-4 w-full text-white hover:text-gray-800">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Close Modal-->
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+</dialog>

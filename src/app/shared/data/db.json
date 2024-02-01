@@ -11,121 +11,141 @@
                 "name": "Hydrogen",
                 "position": 1,
                 "symbol": "H",
-                "molar": 1.00794
+                "molar": 1.00794,
+                "id": 1
             },
             {
                 "name": "Helium",
                 "position": 2,
                 "symbol": "He",
-                "molar": 4.002602
+                "molar": 4.002602,
+                "id": 2
             },
             {
                 "name": "Lithium",
                 "position": 3,
                 "symbol": "Li",
-                "molar": 6.941
+                "molar": 6.941,
+                "id": 3
             },
             {
                 "name": "Beryllium",
                 "position": 4,
                 "symbol": "Be",
-                "molar": 9.012182
+                "molar": 9.012182,
+                "id": 4
             },
             {
                 "name": "Boron",
                 "position": 5,
                 "symbol": "B",
-                "molar": 10.811
+                "molar": 10.811,
+                "id": 5
             },
             {
                 "name": "Carbon",
                 "position": 6,
                 "symbol": "C",
-                "molar": 12.0107
+                "molar": 12.0107,
+                "id": 6
             },
             {
                 "name": "Nitrogen",
                 "position": 7,
                 "symbol": "N",
-                "molar": 14.0067
+                "molar": 14.0067,
+                "id": 7
             },
             {
                 "name": "Oxygen",
                 "position": 8,
                 "symbol": "O",
-                "molar": 15.9994
+                "molar": 15.9994,
+                "id": 8
             },
             {
                 "name": "Fluorine",
                 "position": 9,
                 "symbol": "F",
-                "molar": 18.998404
+                "molar": 18.998404,
+                "id": 9
             },
             {
                 "name": "Neon",
                 "position": 10,
                 "symbol": "Ne",
-                "molar": 20.1797
+                "molar": 20.1797,
+                "id": 10
             },
             {
                 "name": "Sodium",
                 "position": 11,
                 "symbol": "Na",
-                "molar": 22.989769
+                "molar": 22.989769,
+                "id": 11
             },
             {
                 "name": "Magnesium",
                 "position": 12,
                 "symbol": "Mg",
-                "molar": 24.305
+                "molar": 24.305,
+                "id": 12
             },
             {
                 "name": "Aluminium",
                 "position": 13,
                 "symbol": "Al",
-                "molar": 26.981539
+                "molar": 26.981539,
+                "id": 13
             },
             {
                 "name": "Silicon",
                 "position": 14,
                 "symbol": "Si",
-                "molar": 28.0855
+                "molar": 28.0855,
+                "id": 14
             },
             {
                 "name": "Phosphorus",
                 "position": 15,
                 "symbol": "P",
-                "molar": 30.973763
+                "molar": 30.973763,
+                "id": 15
             },
             {
                 "name": "Sulfur",
                 "position": 16,
                 "symbol": "S",
-                "molar": 32.065
+                "molar": 32.065,
+                "id": 16
             },
             {
                 "name": "Chlorine",
                 "position": 17,
                 "symbol": "Cl",
-                "molar": 35.453
+                "molar": 35.453,
+                "id": 17
             },
             {
                 "name": "Argon",
                 "position": 18,
                 "symbol": "Ar",
-                "molar": 39.948
+                "molar": 39.948,
+                "id": 18
             },
             {
                 "name": "Potassium",
                 "position": 19,
                 "symbol": "K",
-                "molar": 39.0983
+                "molar": 39.0983,
+                "id": 19
             },
             {
                 "name": "Calcium",
                 "position": 20,
                 "symbol": "Ca",
-                "molar": 40.078
+                "molar": 40.078,
+                "id": 20
             }
     ]
 }

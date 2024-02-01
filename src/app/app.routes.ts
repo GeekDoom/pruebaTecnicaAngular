@@ -3,6 +3,7 @@ import { LoginComponent } from './core/auth/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { CvsComponent } from './modules/cvs/cvs.component';
 import { CrudComponent } from './modules/crud/crud.component';
+import { ElementComponent } from './modules/element/element.component';
 
 export const routes: Routes = [
     {
@@ -15,6 +16,7 @@ export const routes: Routes = [
         children: [
             { path:'cvs', component: CvsComponent},
             { path: 'crud', component: CrudComponent },
+            { path: 'edit', component: ElementComponent },
             {path: '', redirectTo: 'cvs', pathMatch: 'full'}
         ]
     },

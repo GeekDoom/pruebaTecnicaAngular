@@ -23,3 +23,15 @@ html {
   border-radius: 10px;
 
 }
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.mat-table {
+  overflow-x: auto;
+  overflow: auto;
+  max-height: 200px;
+}

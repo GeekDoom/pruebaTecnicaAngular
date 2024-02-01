@@ -21,11 +21,11 @@ export class ElementsService {
         return this.http.post<ElementData>(`${this.baseUrl}/elements`, elements);
     }
     updateElement(elements: ElementData): Observable<ElementData> { 
-        if(!elements.position) throw new Error('Element position is required')
-        return this.http.patch<ElementData>(`${this.baseUrl}/elements/${elements.position}`, elements);
+        if(!elements.id) throw new Error('Element id is required')
+        return this.http.patch<ElementData>(`${this.baseUrl}/elements/${elements.id}`, elements);
     }
     deleteElementById(elements: ElementData): Observable<boolean> { 
-        return this.http.delete(`${this.baseUrl}/elements/${elements.position}`)
+        return this.http.delete(`${this.baseUrl}/elements/${elements.id}`)
             .pipe(
                 catchError(err => of(false)),
                 map(resp => true)

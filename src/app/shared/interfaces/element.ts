@@ -3,4 +3,5 @@ export interface ElementData {
     position: number;
     symbol:   string;
     molar:    number;
+    id:       number;
 }
