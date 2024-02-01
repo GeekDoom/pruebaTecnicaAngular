@@ -11,6 +11,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ElementData } from '../../shared/interfaces/element';
 import { ElementsService } from '../../core/services/Elements.service';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 
@@ -53,6 +55,8 @@ export class CrudComponent implements OnInit {
         private _liveAnnouncer: LiveAnnouncer,
         private fb: FormBuilder,
         private es: ElementsService,
+        private router: Router,
+        private _location: Location,
         ) { }
         
         ngOnInit(): void {
@@ -74,7 +78,7 @@ export class CrudComponent implements OnInit {
         position: ['', Validators.required],
         name:     ['', Validators.required],
         molar:   ['', Validators.required],
-        symbol:   ['', Validators.required],
+        symbol: ['', Validators.required],
     })
     
     @ViewChild(MatSort) sort!: MatSort;
@@ -87,9 +91,46 @@ export class CrudComponent implements OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
     }
+
+    get currentElement(): ElementData{
+        const element = this.newElement.value as unknown as ElementData;
+        return element;
+    }
     
     onSubmit(): void {
-       this.es.addElements
-       console.log(this.newElement.value) 
+         if (this.newElement.valid) return 
+
+        if (this.currentElement.id) {
+            this.es.updateElement(this.currentElement)
+                .subscribe(element => { 
+                    //TODO: Snackbar
+                });
+            return;
+        } 
+
+         
+        this.es.addElements(this.currentElement)
+            .subscribe(element => {
+            //TODO: snackbar and navigate to the element
+            })
+        setTimeout(() => {
+      this.router.navigateByUrl("/crud", { skipLocationChange: true }).then(() => {
+        this.router.navigate([decodeURI(this._location.path())]);
+      });
+        }, 1000)
+    }
+    onDelete(element: ElementData) { 
+        console.log(element.id)
+        this.es.deleteElementById(element)
+            .subscribe(element => {
+                if (element) {
+                    this.router.navigate(['/index/crud'])
+                }
+                //TODO: snackbar
+            })
+        this.router.navigateByUrl("/crud", { skipLocationChange: true }).then(() => {
+            this.router.navigate([decodeURI(this._location.path())]);
+        });
+        return;
     }
  }
