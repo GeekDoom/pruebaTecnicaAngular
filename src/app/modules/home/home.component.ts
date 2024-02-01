@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
@@ -8,7 +9,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   imports: [
       CommonModule,
       RouterOutlet,
-      RouterLink
+      RouterLink,
+      HttpClientModule
   ],
   templateUrl: './home.component.html',
   styles: `

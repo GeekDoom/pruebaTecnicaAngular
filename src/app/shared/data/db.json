@@ -1,0 +1,131 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "test@test.com",
+            "password": "test"
+        }
+    ],
+    "elements": [
+            {
+                "name": "Hydrogen",
+                "position": 1,
+                "symbol": "H",
+                "molar": 1.00794
+            },
+            {
+                "name": "Helium",
+                "position": 2,
+                "symbol": "He",
+                "molar": 4.002602
+            },
+            {
+                "name": "Lithium",
+                "position": 3,
+                "symbol": "Li",
+                "molar": 6.941
+            },
+            {
+                "name": "Beryllium",
+                "position": 4,
+                "symbol": "Be",
+                "molar": 9.012182
+            },
+            {
+                "name": "Boron",
+                "position": 5,
+                "symbol": "B",
+                "molar": 10.811
+            },
+            {
+                "name": "Carbon",
+                "position": 6,
+                "symbol": "C",
+                "molar": 12.0107
+            },
+            {
+                "name": "Nitrogen",
+                "position": 7,
+                "symbol": "N",
+                "molar": 14.0067
+            },
+            {
+                "name": "Oxygen",
+                "position": 8,
+                "symbol": "O",
+                "molar": 15.9994
+            },
+            {
+                "name": "Fluorine",
+                "position": 9,
+                "symbol": "F",
+                "molar": 18.998404
+            },
+            {
+                "name": "Neon",
+                "position": 10,
+                "symbol": "Ne",
+                "molar": 20.1797
+            },
+            {
+                "name": "Sodium",
+                "position": 11,
+                "symbol": "Na",
+                "molar": 22.989769
+            },
+            {
+                "name": "Magnesium",
+                "position": 12,
+                "symbol": "Mg",
+                "molar": 24.305
+            },
+            {
+                "name": "Aluminium",
+                "position": 13,
+                "symbol": "Al",
+                "molar": 26.981539
+            },
+            {
+                "name": "Silicon",
+                "position": 14,
+                "symbol": "Si",
+                "molar": 28.0855
+            },
+            {
+                "name": "Phosphorus",
+                "position": 15,
+                "symbol": "P",
+                "molar": 30.973763
+            },
+            {
+                "name": "Sulfur",
+                "position": 16,
+                "symbol": "S",
+                "molar": 32.065
+            },
+            {
+                "name": "Chlorine",
+                "position": 17,
+                "symbol": "Cl",
+                "molar": 35.453
+            },
+            {
+                "name": "Argon",
+                "position": 18,
+                "symbol": "Ar",
+                "molar": 39.948
+            },
+            {
+                "name": "Potassium",
+                "position": 19,
+                "symbol": "K",
+                "molar": 39.0983
+            },
+            {
+                "name": "Calcium",
+                "position": 20,
+                "symbol": "Ca",
+                "molar": 40.078
+            }
+    ]
+}
