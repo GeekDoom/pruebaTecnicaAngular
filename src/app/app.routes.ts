@@ -21,7 +21,7 @@ export const routes: Routes = [
             { path:'cvs', component: CvsComponent},
             { path: 'crud', component: CrudComponent },
             { path: 'edit', component: ElementComponent },
-            {path: '', redirectTo: 'cvs', pathMatch: 'full'}
+            {path: '**', redirectTo: 'cvs', pathMatch: 'full'}
         ],
         canActivate: [ AuthGuard ],
         canMatch: [ AuthGuard ]

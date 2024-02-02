@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
       .subscribe(ok => {
         if (ok) {
             this.router.navigate(['/index/crud'])
-            console.log(ok)
-
         } else {
             Swal.fire('Error', 'error')
         }

@@ -28,7 +28,8 @@ export class ElementsService {
         return this.http.delete(`${this.baseUrl}/elements/${elements.id}`)
             .pipe(
                 catchError(err => of(false)),
-                map(resp => true)
+                map(resp => true),
+                catchError( err => of(false) ),
             );
     }
 

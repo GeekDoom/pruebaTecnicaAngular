@@ -98,7 +98,7 @@ export class CrudComponent implements OnInit {
     }
     
     onSubmit(): void {
-         if (this.newElement.valid) return 
+         if (!this.newElement.valid) return 
 
         if (this.currentElement.id) {
             this.es.updateElement(this.currentElement)
@@ -111,26 +111,21 @@ export class CrudComponent implements OnInit {
          
         this.es.addElements(this.currentElement)
             .subscribe(element => {
-            //TODO: snackbar and navigate to the element
+                //TODO: snackbar and navigate to the element
+                this.router.navigateByUrl("/index", { skipLocationChange: true }).then(() => {
+                    this.router.navigate([decodeURI(this._location.path())]);
+                    });
             })
-        setTimeout(() => {
-      this.router.navigateByUrl("/crud", { skipLocationChange: true }).then(() => {
-        this.router.navigate([decodeURI(this._location.path())]);
-      });
-        }, 1000)
-    }
-    onDelete(element: ElementData) { 
-        console.log(element.id)
-        this.es.deleteElementById(element)
-            .subscribe(element => {
-                if (element) {
-                    this.router.navigate(['/index/crud'])
+        }
+        onDelete(element: ElementData) { 
+            this.es.deleteElementById(element)
+            .subscribe(wasDeleted => {
+                if (wasDeleted) {
+                    this.router.navigateByUrl("/index", { skipLocationChange: true }).then(() => {
+                    this.router.navigate([decodeURI(this._location.path())]);
+                    });
                 }
                 //TODO: snackbar
             })
-        this.router.navigateByUrl("/crud", { skipLocationChange: true }).then(() => {
-            this.router.navigate([decodeURI(this._location.path())]);
-        });
-        return;
     }
  }
