@@ -1,66 +1,51 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AuthResponse, User } from '../../shared/interfaces/Auth';
+import { environments } from '../../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl: string = 'tests'
+  private baseUrl: string = environments.baseUrl
 
-  private _user!: User;
+  private user!: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
 
 
-  get user() {
-    return { ...this._user };
+  get currentUser():User|undefined {
+    if ( !this.user ) return undefined;
+    return structuredClone( this.user );
   }
 
-
-
-
-  login(email: string, password: string) {
-    const url = `${this.baseUrl}/auth`;
-    const body = { email, password }
-    return this.http.post<AuthResponse>(url, body)
+  login( email: string, password: string ):Observable<User> {
+    // http.post('login',{ email, password });
+    return this.http.get<User>(`${ this.baseUrl }/users/1`)
       .pipe(
-        tap(resp => {
-          if (resp.ok) {
-            localStorage.setItem('token', resp.token!)
-            this._user = {
-              name: resp.name!,
-              uid: resp.uid!
-            }
-          }
-        }),
-        map(valid => valid.ok),
-        catchError(err => of(err.error.msg))
+        tap( user => this.user = user ),
+        tap( user => localStorage.setItem('token', 'aASDgjhasda.asdasd.aadsf123k' )),
       );
   }
 
+  checkAuthentication(): Observable<boolean> {
 
-  validateToken() {
-    const url = `${this.baseUrl}/auth`;
-    const headers = new HttpHeaders()
-      .set('security-x', localStorage.getItem('token') || '')
+    if ( !localStorage.getItem('token') ) return of(false);
 
-    return this.http.get<AuthResponse>(url, { headers })
+    const token = localStorage.getItem('token');
+
+    return this.http.get<User>(`${ this.baseUrl }/users/1`)
       .pipe(
-        map(resp => {
-          localStorage.setItem('token', resp.token!)
-          this._user = {
-            name: resp.name!,
-            uid: resp.uid!
-          }
-          return resp.ok
-        }),
-        catchError(err => of(false))
-      )
+        tap( user => this.user = user ),
+        map( user => !!user ),
+        catchError( err => of(false) )
+      );
+
   }
+
 
   logout() {
     localStorage.removeItem('token');

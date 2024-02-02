@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,14 @@ export class HomeComponent {
     isList!: number;
     isMenu: boolean = false;
     isSearch: boolean = false;
-    constructor() { }
+    constructor(
+        private router: Router,
+        private as: AuthService,
+    ) { }
+
+    logout() {
+    this.as.logout();
+    this.router.navigate(['./login']);
+  }
      
  }

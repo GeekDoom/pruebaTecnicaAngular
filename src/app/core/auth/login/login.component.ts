@@ -41,14 +41,16 @@ export class LoginComponent implements OnInit {
 
      this.as.login(email!, password!)
       .subscribe(ok => {
-        if (ok === true) {
-          this.router.navigateByUrl('/admin')
+        if (ok) {
+            this.router.navigate(['/index/crud'])
+            console.log(ok)
 
         } else {
-          Swal.fire('Error', ok, 'error')
+            Swal.fire('Error', 'error')
         }
       }) 
 
   }
+    
 
 }
